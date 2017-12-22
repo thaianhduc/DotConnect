@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace DotConnect.LogGoose
 {
@@ -54,20 +56,15 @@ namespace DotConnect.LogGoose
         private static void FullLookup(SearchInfo searchInfo)
         {
             var root = new DirectoryInfo(searchInfo.Location);
-            var topLevel = Looking(root, searchInfo.SearchTerm);
-            if (topLevel.Found)
+            foreach (var result in Looking(root, searchInfo.SearchTerm))
             {
-                PrintResult(topLevel);
+                PrintResult(result);
             }
-
+            
             foreach (var directoryInfo in root.EnumerateDirectories())
             {
-                topLevel = Looking(directoryInfo, searchInfo.SearchTerm);
-                if (topLevel.Found)
-                {
-                    PrintResult(topLevel);
-                }
-            }
+                FullLookup(new SearchInfo{Location = directoryInfo.FullName, SearchTerm = searchInfo.SearchTerm});                
+            }            
         }
 
         private static void PrintResult(SearchResult topLevel)
@@ -85,22 +82,23 @@ namespace DotConnect.LogGoose
             Console.ForegroundColor = color;
         }
 
-        private static SearchResult Looking(DirectoryInfo dicInfo, string searchTerm)
+        private static IEnumerable<SearchResult> Looking(DirectoryInfo dicInfo, string searchTerm)
         {
+            var pattern = new Regex(searchTerm, RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
             foreach (var file in dicInfo.EnumerateFiles())
             {
                 Console.WriteLine($"Looking at: {file.FullName} ");
                 using (var stream = File.OpenRead(file.FullName))
                 {
-                    using (var reader = new StreamReader(stream, Encoding.UTF8))
+                    using (var reader = new StreamReader(stream, Encoding.Default))
                     {
                         var lineNumber = 1;
                         while (!reader.EndOfStream)
                         {
                             var line = reader.ReadLine();
-                            if (!string.IsNullOrWhiteSpace(line) && line.Contains(searchTerm))
+                            if (!string.IsNullOrWhiteSpace(line) && pattern.IsMatch(line))
                             {
-                                return new SearchResult
+                               yield return new SearchResult
                                 {
                                     LineNumber = lineNumber,
                                     FileName = file.FullName,
@@ -113,7 +111,6 @@ namespace DotConnect.LogGoose
                     }
                 }
             }
-            return SearchResult.NotFound();
         }
     }
 }
