@@ -5,12 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EntityFramework">
-      <Version>6.2.0</Version>
-    </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\DotConnect.CommandHandler\DotConnect.CommandHandler.csproj" />
     <ProjectReference Include="..\DotConnect.Contracts\DotConnect.Contracts.csproj" />
     <ProjectReference Include="..\DotConnect.Core\DotConnect.Core.csproj" />
     <ProjectReference Include="..\DotConnect.Domain\DotConnect.Domain.csproj" />

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DotConnect.CommandHandler
+namespace DotConnect.Core
 {
     public class Class1
     {
