@@ -19,7 +19,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotConnect.CommandHandler.T
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotConnect.LeakyAbstraction", "DotConnect.LeakyAbstraction\DotConnect.LeakyAbstraction.csproj", "{75C147B4-8603-4558-9542-3F5C9EFA624F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotConnect.LogGoose", "DotConnect.LogGoose\DotConnect.LogGoose.csproj", "{288F0DC0-5F60-4C62-860A-D0D7BB366B71}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotConnect.LogGoose", "DotConnect.LogGoose\DotConnect.LogGoose.csproj", "{288F0DC0-5F60-4C62-860A-D0D7BB366B71}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotConnect.MCSA", "DotConnect.MCSA\DotConnect.MCSA.csproj", "{01D04026-AF95-48E9-819B-D81B37EDE69D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotConnect.Loggy", "DotConnect.Loggy\DotConnect.Loggy.csproj", "{ACF882BA-6680-4223-B7D7-2D7411B23EFF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MCSD70-487", "MCSD70-487", "{E37C6288-8BC3-40ED-AF20-E8E72A366477}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotConnect.EfCore", "DotConnect.EfCore\DotConnect.EfCore.csproj", "{D7A8A7AA-1FBD-4D68-8FC2-AFEEEE8E5749}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotConnect.Memory", "DotConnect.Memory\DotConnect.Memory.csproj", "{66EB2423-08BE-42AD-8787-729CB81A2567}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,9 +73,28 @@ Global
 		{288F0DC0-5F60-4C62-860A-D0D7BB366B71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{288F0DC0-5F60-4C62-860A-D0D7BB366B71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{288F0DC0-5F60-4C62-860A-D0D7BB366B71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01D04026-AF95-48E9-819B-D81B37EDE69D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01D04026-AF95-48E9-819B-D81B37EDE69D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01D04026-AF95-48E9-819B-D81B37EDE69D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01D04026-AF95-48E9-819B-D81B37EDE69D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACF882BA-6680-4223-B7D7-2D7411B23EFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACF882BA-6680-4223-B7D7-2D7411B23EFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACF882BA-6680-4223-B7D7-2D7411B23EFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACF882BA-6680-4223-B7D7-2D7411B23EFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7A8A7AA-1FBD-4D68-8FC2-AFEEEE8E5749}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7A8A7AA-1FBD-4D68-8FC2-AFEEEE8E5749}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7A8A7AA-1FBD-4D68-8FC2-AFEEEE8E5749}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7A8A7AA-1FBD-4D68-8FC2-AFEEEE8E5749}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66EB2423-08BE-42AD-8787-729CB81A2567}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66EB2423-08BE-42AD-8787-729CB81A2567}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66EB2423-08BE-42AD-8787-729CB81A2567}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66EB2423-08BE-42AD-8787-729CB81A2567}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D7A8A7AA-1FBD-4D68-8FC2-AFEEEE8E5749} = {E37C6288-8BC3-40ED-AF20-E8E72A366477}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2D1E6AC1-7263-4BC3-BA8F-D851B471BA08}

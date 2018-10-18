@@ -44,8 +44,18 @@ namespace DotConnect.LogGoose
                 path = Console.ReadLine();
             }
 
-            Console.WriteLine("Looking for? ");
-            var searchTerm = Console.ReadLine();
+            string searchTerm = "";
+            if (args.Length == 2)
+            {
+                searchTerm = args[1];
+            }
+
+            if (string.IsNullOrWhiteSpace(searchTerm))
+            {
+                Console.WriteLine("Looking for? ");
+                searchTerm = Console.ReadLine();
+            }
+
             return new SearchInfo
             {
                 Location = path,
@@ -69,7 +79,6 @@ namespace DotConnect.LogGoose
 
         private static void PrintResult(SearchResult topLevel)
         {
-            Console.WriteLine($"BINGO!");
             WriteColor($"Line: {topLevel.LineNumber} File: {topLevel.FileName}");
             WriteColor(topLevel.FullText);
         }
