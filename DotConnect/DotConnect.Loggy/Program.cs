@@ -30,8 +30,12 @@ namespace DotConnect.Loggy
             Console.WriteLine("Hold on .... and smile!");
             var defaultColor = Console.ForegroundColor;
             int totalTransaction = 0;
+            int totalExecution = 0;
+            double totalTime = 0;
             foreach (var r in result)
             {
+                totalExecution += r.NumberOfExecution;
+                totalTime += r.TotalExecutionTime;
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine(r.TransactionType);
                 Console.ForegroundColor = defaultColor;
@@ -40,7 +44,9 @@ namespace DotConnect.Loggy
                 totalTransaction++;
             }
             sw.Stop();
-            Console.WriteLine("Total transaction: {0}. Done in: {1}", totalTransaction, sw.Elapsed);
+            Console.WriteLine("Total transaction: {0}. Average: {2}. Done in: {1}", 
+                totalTransaction, sw.Elapsed,
+                TimeSpan.FromMilliseconds(totalTime/totalExecution));
             Console.WriteLine("Press any key to exit ...");
         }
 
@@ -107,7 +113,7 @@ namespace DotConnect.Loggy
             var items = line.Split(new[] {",", ";"}, StringSplitOptions.RemoveEmptyEntries);
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i].IndexOf("urn:domstolene:jfs:", StringComparison.InvariantCulture) > -1)
+                if (items[i].IndexOf("urn:", StringComparison.InvariantCulture) > -1)
                 {
                     return Tuple.Create(items[i], int.Parse(items[i+1].Trim()));
                 }
