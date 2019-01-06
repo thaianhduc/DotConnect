@@ -3,7 +3,6 @@ using System.Linq;
 
 namespace DotConnect.LeakyAbstraction
 {
-
     class Program
     {
         static void Main(string[] args)
@@ -35,6 +34,8 @@ namespace DotConnect.LeakyAbstraction
                 string.Join("; ", school.TeacherCollection
                                         .WhereExperienced()
                                         .Select(x => x.Name)));
+            var batmanIndex = school.TeacherCollection.BuildIndex().GetIndex("Batman");
+            Console.WriteLine($"Hey Batman is at {batmanIndex}");
         }
     }
 }

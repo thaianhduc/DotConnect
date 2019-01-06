@@ -5,24 +5,22 @@ using System.Linq;
 
 namespace DotConnect.LeakyAbstraction
 {
-    public class TeacherCollection : IEnumerable<Teacher>
+    public class TeacherCollection : ITeacherCollection, IIndexedTeacherCollection
     {
         private readonly IList<Teacher> _teachers = new List<Teacher>();
 
         public TeacherCollection(IEnumerable<Teacher> teachers)
         {
             if (teachers != null)
-                _teachers = teachers.Where(x => x.IsStillAtWork)
-                .OrderBy(x => x.StartedOn)
-                .ToList();
+                _teachers = teachers.Where(x => x.IsStillAtWork).ToList();
         }
 
-        public TeacherCollection WhereTeachMathematics()
+        public ITeacherCollection WhereTeachMathematics()
         {
             return new TeacherCollection(_teachers.Where(x => x.Specialty == "Mathematics"));
         }
 
-        public TeacherCollection WhereExperienced()
+        public ITeacherCollection WhereExperienced()
         {
             return new TeacherCollection(_teachers.Where(x => DateTime.Now >= x.StartedOn.AddYears(10)));
         }
@@ -52,6 +50,11 @@ namespace DotConnect.LeakyAbstraction
                 }
             }
             return -1;
+        }
+
+        public IIndexedTeacherCollection BuildIndex()
+        {
+            return new TeacherCollection(_teachers.OrderBy(x => x.StartedOn));
         }
     }
 }

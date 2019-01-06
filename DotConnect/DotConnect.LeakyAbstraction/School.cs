@@ -8,7 +8,7 @@ namespace DotConnect.LeakyAbstraction
         public string Name { get; set; }
         public IList<Teacher> Teachers { get; set; }
 
-        public TeacherCollection TeacherCollection
+        public ITeacherCollection TeacherCollection
         {
             get
             {
