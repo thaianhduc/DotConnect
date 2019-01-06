@@ -27,15 +27,13 @@ namespace DotConnect.LeakyAbstraction
                 IsStillAtWork = false
             });
             Console.WriteLine("Total teachers: {0}", school.TeacherCollection.Count);
-            Console.WriteLine("Mathematics teachers are: {0}", 
+            Console.WriteLine("Mathematics teachers are: {0}",
                 string.Join("; ", school.TeacherCollection
                                         .WhereTeachMathematics()
-                                        .AsEnumerable
                                         .Select(x => x.Name)));
             Console.WriteLine("> 10 years teachers are: {0}",
                 string.Join("; ", school.TeacherCollection
                                         .WhereExperienced()
-                                        .AsEnumerable
                                         .Select(x => x.Name)));
         }
     }
